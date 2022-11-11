@@ -1,0 +1,60 @@
+{% extends 'product_app/base.html' %} 
+{% load static %} 
+{% block title%}Orders{% endblock title %} 
+{% block css %}
+<link
+  rel="stylesheet"
+  href="{% static './css/cart.css' %}"
+/>
+{% endblock css %} 
+
+{% block content %}
+<div class="container-cart">
+  <div class="row-cart">
+    <div class="col-cart-main">
+      <div style="display: flex; justify-content: space-between">
+        <h2>
+          <a href="{% url 'orders' %}" class="button is-primary">Your Orders</a>
+        </h2>
+        <h2>
+          <a href="{% url 'accepted_orders' %}" class="button is-success">I received</a>
+        </h2>
+      </div>
+      <hr />
+      <hr />
+      <div class="row-order-item">
+        {% if orders %}
+					{% for order in orders %}
+          <div class="col-order-item">
+            <div class="order-item-details">
+              <div class="item-details">
+                {{order.item.restaurant.restaurant_name}}
+              </div>
+              <div class="item-details">{{order.item.name}}</div>
+              <div class="item-price item-details" id="unit_price{{order.id}}">
+                Rs. {{order.item.unit_price}}
+              </div>
+            </div>
+            <div class="order-controls">
+              <div class="buttons">
+                <a href="{% url 'mark_as_delivered' order.id %}">
+                  <button class="button is-small is-success" type="button">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                </a>&nbsp;
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+        <div>
+          <h3>Sad to see so empty.</h3>
+        </div>
+        {%endif%}
+        <!-- one order item end -->
+      </div>
+    </div>
+    <div class="col-cart-mid"></div>
+  </div>
+</div>
+{% endblock content %}

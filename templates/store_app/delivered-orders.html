@@ -1,0 +1,83 @@
+{% extends 'product_app/base.html' %}
+{% load static %}
+
+{% block title %} Admin {% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static './css/restro_admin.css' %}">{% endblock css %}
+
+{% block content %}
+<form action="
+  {% if data %}
+    {% url 'edit-product' data.id %}
+  {% else %}
+    {% url 'add-product' %}  
+  {% endif %}
+  "
+  method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+<div class="field">
+  <label class="label">Name</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="Eg. German Dark Sofa" name="name" value=" {% if data %} {{data.name}} {% endif %} "/>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Price</label>
+  <div class="control has-icons-left has-icons-right">
+    <input
+      class="input is-success"
+      type="number"
+      placeholder="Eg. 1000"
+      name="price"
+      value=" {% if data %} {{data.unit_price}} {% endif %} "
+    />
+  </div>
+</div>
+<div class="field">
+  <input type="file" id="img" name="thumbnail" value=" {% if data %} {{data.thumbnail}} {% endif %}">
+</div>
+<br/>
+
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-link" type="submit">Submit</button>
+  </div>
+</div>
+</form>
+<hr/>
+
+
+<div class="is-flex is-justify-content-space-between is-flex-direction-row">
+    <a href=" {% url 'dashboard' %} "><h4 class="title button is-primary is-medium">Menu</h4></a>
+    <a href=" {% url 'received-orders' %} "><h3 class="title button is-info is-medium">Received Orders</h3></a>
+    <a href=" {% url 'delivered-orders' %} "><h3 class="title button is-success is-medium">Delivered Orders</h3></a>
+</div>
+
+<div class="is-flex is-flex-direction-row-reverse">
+<table class="table">
+    <thead>
+      <tr>
+        <th><abbr title="Position">S.N</abbr></th>
+        <th>Product</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Delivery Date</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      {% for order in orders %}
+      <tr>
+        <th>{{ forloop.counter }}</th>
+        <td> <strong>{{ order.item.name }}</strong></td>
+        <td>{{ order.item.unit_price }}</td>
+        <td>{{ order.quantity }}</td>
+        <td>{% widthratio order.item.unit_price 1 order.quantity %}</td>
+        <td>{{ order.deliver_date }}</td>
+      </tr>    
+      {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock%}

@@ -1,0 +1,39 @@
+{% extends 'product_app/base.html' %}
+{% load static %}
+
+  <!-- login start -->
+{% block title %} Login {% endblock %}
+
+
+
+{% block main %}
+<form action="/user_app/authenticate/" method="post" enctype="multipart/form-data">  {% csrf_token %}
+  <div class="field">
+    <label class="label">Username</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-success" type="text" placeholder="Text input" name="username">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+    </div>
+
+    <label class="label">Password</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-success" type="password" placeholder="Text input" name="password">
+      <span class="icon is-small is-left">
+        <i class="fas fa-key"></i>
+      </span>
+    </div>
+  </div>
+
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-link" type="submit">Submit</button>
+    </div>
+    <div class="control">
+      <button class="button is-link is-light">Cancel</button>
+    </div>
+  </div>
+</form>
+{% endblock %}

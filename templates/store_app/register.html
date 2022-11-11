@@ -1,0 +1,122 @@
+{% extends 'product_app/base.html' %} 
+{% load static %} 
+{% block title %}Register {% endblock %} 
+
+{% block main %}
+<form
+  action="/store_app/register/"
+  method="post"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %}
+
+	<div class="menu">
+		<p class="menu-label">Admin Details</p>
+
+		<div class="field">
+		<label class="label">Username</label>
+		<div class="control has-icons-left has-icons-right">
+			<input
+				class="input is-success"
+				type="text"
+				placeholder="example33"
+				name="username"
+				minlength="3" 
+				required 
+				pattern="[a-zA-z]{1}[a-zA-z]*"
+			/>
+			<span class="icon is-small is-left">
+				<i class="fas fa-user"></i>
+			</span>
+		</div>
+
+		<label class="label">Email</label>
+		<div class="control has-icons-left has-icons-right">
+			<input
+				class="input is-success"
+				type="email"
+				placeholder="example@gmail.com"
+				name="email"
+				required
+			/>
+			<span class="icon is-small is-left">
+				<i class="fa-solid fa-envelope"></i>
+			</span>
+		</div>
+
+		<label class="label">Password</label>
+		<div class="control has-icons-left has-icons-right">
+			<input
+				class="input is-success"
+				type="password"
+				placeholder="Text input"
+				name="password"
+				minlength="3" 
+				required 
+			/>
+			<span class="icon is-small is-left">
+				<i class="fas fa-key"></i>
+			</span>
+		</div>
+	</div>
+
+	<div class="menu">
+		<p class="menu-label">Store Details</p>
+		
+		<label class="label">Store Name</label>
+		<div class="control has-icons-left has-icons-right">
+			<input
+				class="input is-success"
+				type="text"
+				placeholder="Text input"
+				name="store_name"
+				minlength="3" 
+				required 
+				pattern="[a-zA-z]*"
+			/>
+			<span class="icon is-small is-left">
+				<i class="fas fa-user"></i>
+			</span>
+		</div>
+
+
+		<label class="label">Phone</label>
+		<div class="control has-icons-left has-icons-right">
+			<input
+				class="input is-success"
+				type="tel"
+				placeholder="Text input"
+				name="phone"
+				pattern="9[6-8]{1}[0-9]{8}"
+			/>
+			<span class="icon is-small is-left">
+				<i class="fa-solid fa-phone"></i>
+			</span>
+		</div>
+
+		<label class="label">Location</label>
+		<div class="control has-icons-left has-icons-right">
+			<input
+				class="input is-success"
+				type="text"
+				placeholder="Text input"
+				name="location"
+			/>
+			<span class="icon is-small is-left">
+				<i class="fa-solid fa-location-pin"></i>
+			</span>
+		</div>
+	</div>
+	<br />
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-link" type="submit">Submit</button>
+    </div>
+    <div class="control">
+      <button class="button is-link is-light" type="reset">Clear</button>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

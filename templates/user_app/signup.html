@@ -1,0 +1,53 @@
+{% extends 'product_app/base.html' %}
+{% load static %}
+
+{% block title %}Signup{% endblock title %}
+
+{% block main %}
+<form action="/user_app/register/" method="post" enctype="multipart/form-data">  {% csrf_token %}
+  <div class="field">
+    <label class="label">Username</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-success" type="text" placeholder="example" name="username" minlength="3" pattern="[a-zA-z].[a-zA-z]*">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+    </div>
+
+    <label class="label">First Name</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-success" type="text" placeholder="Eg. John" name="firstname" minlength="3" required pattern="[a-zA-z]*">
+      <span class="icon is-small is-left">
+        <i class="fa-solid fa-text"></i>
+      </span>
+    </div>
+
+    <label class="label">Last Name</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-success" type="text" placeholder="Eg. Doe" name="lastname" minlength="3" required pattern="[a-zA-z]*">
+      <span class="icon is-small is-left">
+        <i class="fa-solid fa-text"></i>
+      </span>
+    </div>
+
+    <label class="label">Password</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-success" type="password" placeholder="8-14 characters" name="password" minlength="8" maxlength="14" required pattern="[a-zA-z0-9]*">
+      <span class="icon is-small is-left">
+        <i class="fas fa-key"></i>
+      </span>
+    </div>
+  </div>
+
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-link" type="submit">Submit</button>
+    </div>
+    <div class="control">
+      <button class="button is-link is-light">Cancel</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
+

@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+section{
+    position: relative;
+    width: 100%;
+    /* height: 90vh; */
+    display: flex;
+    /* background: darkgrey; */
+}
+section .imgBx{
+    position: relative;
+    width: 50%;
+    /* height: 100%; */
+}
+section .imgBx:before{
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* height: 100%; */
+    width: 100%;
+    background: #554b4b;
+    z-index: 1;
+    mix-blend-mode: screen;
+    border-radius: 10px;
+}
+section .imgBx img{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    /* height:100%; */
+    object-fit: cover;
+}
+
+section .contentBx{
+    width: 50%;
+    /* height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section .contentBx .formBx{
+    width: 50%;
+}
+section .contentBx .formBx h2{
+    color: #607d8b;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #ff4584;
+    display: inline-block;
+}
+section .contentBx .formBx .inputBx{
+    margin-bottom: 20px;
+}
+section .contentBx .formBx .inputBx span{
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #607d8b;
+    font-weight: 300;
+}
+section .contentBx .formBx .inputBx input{
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid #607d8b;
+    font-size: 16px;
+    color: #607d8b;
+    background: transparent;
+    border-radius: 30px;
+}
+section .contentBx .formBx .inputBx input[type="submit"]{
+    background: #ff4548;
+    color: #fff;
+    display: inline-block;
+    border:none;
+    font-weight: 600;
+    cursor: pointer;
+}
+section .contentBx .formBx .inputBx input[type="submit"]:hover{
+    background: #f35677;
+}
+section .contentBx .formBx .remember{
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #607d8b;
+}
+section .contentBx .formBx p{
+    color: #607d8b;
+    text-align: center;
+}
+section .contentBx .formBx p a{
+    color: #ff4548;
+    text-decoration: none;
+}
+section .contentBx .formBx h3{
+    color: #607d8b;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+section .contentBx .formBx .soc{
+    display: flex;
+    /* margin: 0 20px; */
+    justify-content: space-between;
+    
+}
+section .contentBx .formBx .soc li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 30px;
+    width: 40%;
+    text-align: center;
+    font-weight: 400;
+    color: #fff;
+    list-style-type: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+section .contentBx .formBx .soc .facebook{
+    background-color: rgb(70, 70, 230);
+}
+section .contentBx .formBx .soc .google{
+    background-color: rgb(234, 177, 31);
+}
+
+section .contentBx .formBx .soc li:hover{
+    background-color: #f35677;
+}
+
+section .contentBx .formBx p{
+    align-items: center;
+    color: #607d8b;
+}
+
+.login-button{
+    background: #fff;
+    padding: 10px 15px;
+    color: #34495e;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.4s;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-left: 55px;
+    border:3px solid #ff4548;
+}
+.login-button:hover{
+    background: #ff4548;
+    color: #fff;
+}
+
+.title-login{
+    position: relative;
+    margin-left: 140px;
+    font-size: bolder;
+}
+.title-login::before{
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 75px;
+    top: 100%;
+    left: 42%;
+    /* color: green; */
+    bottom: 0;
+    background: #554b4b;
+}
+
+.close{
+    position: absolute;
+    top:-15px;
+    right: -15px;
+    background: #fff;
+    height: 20px;
+    width:20px;
+    border-radius: 50%;
+    box-shadow: 6px 6px 29px -4px rgba(0,0,0,0.75);
+    cursor: pointer;
+}
+
+.reg-details{
+    font-size: 18px;
+    font-weight: bolder;
+    margin-left: 55px;
+}
+.inputBox{
+    height: 45px;
+    width: 60%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 3px;
+    transition: all 0.3s ease;
+    display: block;
+    /* align-items: center; */
+    /* justify-content: center; */
+    margin: 10px 50px 20px 55px;
+}
+.other-details{
+    margin-left: 55px;
+}
+
+.forgot-password{
+    display: block;
+    margin:20px 0 5px 55px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000;
+}
+.forgot-password:hover{
+    text-decoration: underline;
+    transition: all 0.5 ease;
+}
+
+.signup{
+    font-size: 16px;
+    margin-left: 55px;
+    margin-bottom: 5px;
+}
+.signup-link{
+    text-decoration: none;
+    cursor: pointer;
+    color:#ff4548;
+}
+.other{
+    margin-left: 55px;
+}
+
+.number::-webkit-outer-spin-button,
+.number::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+
+@media (max-width: 768px){
+    .popup-content {
+        width: 320px;
+    }
+    .inputBox {
+        width: 80%;
+    }
+    section .imgBx {
+        position: absolute;
+        width: 100%;
+        /* height: 100%; */
+    }
+    section .contentBx {
+        width: 100%;
+        /* height: 100vh; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+    section .contentBx .formBx {
+        width: 100%;
+        padding: 30px 30px;
+        background-color: #fffbfba1;
+        margin: 10px 20px;
+    }
+}

@@ -1,0 +1,151 @@
+{% extends 'product_app/base.html' %} 
+{% load static %} 
+{% block title%}Orders{% endblock title %} 
+{% block css %}<link
+  rel="stylesheet"
+  href="{% static './css/cart.css' %}"
+/>{% endblock css %} 
+
+{% block content %}
+<!-- cart start -->
+<div class="container-cart">
+  <div class="row-cart">
+    <div class="col-cart-main">
+      <div style="display: flex; justify-content: space-between">
+        <h2>
+          <a href="{% url 'orders' %}" class="button is-primary"
+            >Your Orders
+          </a>
+        </h2>
+        <h2>
+          <a href="{% url 'accepted_orders' %}" class="button is-success"
+            >I received
+          </a>
+        </h2>
+      </div>
+      <hr />
+      <div class="row-order-item container">
+        <!-- one order item start -->
+        {% if orders %}
+        <form action="{% url 'checkout' %}" method="POST">
+          {% csrf_token %} 
+					{% for order in orders %}
+          <div class="col-order-item">
+            <img
+              src="http://localhost:8000{{order.item.image.url}}"
+              class="img-item"
+              alt="item-image"
+            />
+            <div class="order-item-details">
+              <div class="item-details">
+                {{order.item.restaurant.restaurant_name}}
+              </div>
+
+              <div class="item-details">{{order.item.name}}</div>
+              <div class="item-price item-details" id="unit_price{{order.id}}">
+                Rs. {{order.item.unit_price}}
+              </div>
+            </div>
+            <div class="is-flex">
+              <div class="buttons is-flex">
+                <button
+                  class="button"
+                  type="button"
+                  id="subtract{{order.id}}"
+                  onClick="decrement({{order.id}})"
+                >
+                  <i class="fa-solid fa-minus minus"></i>
+                </button>
+                <input
+                  class="input number"
+                  type="number"
+                  id="quantity{{order.id}}"
+                  name="quantity-{{order.id}}"
+                  value="{{order.quantity}}"
+                  style="width: 60px"
+                />
+                <button
+                  class="button"
+                  type="button"
+                  id="add{{order.id}}"
+                  onClick="increment({{order.id}})"
+                >
+                  <i class="fa-solid fa-plus plus"></i>
+                </button>
+                <a href="{% url 'delete_from_orders' order.id %}">
+                  <button class="button delete" type="button"></button>
+                </a>
+                {% if order.status == pending %}
+                <span class="button is-small is-warning"
+                  >{{order.order_status}}</span
+                >
+
+                {% elif order.status == accepted %}
+                <span class="button is-small is-success"
+                  >{{order.order_status}}</span
+                >
+                {% endif %}
+              </div>
+              <div class="total">
+                Total: Rs.
+                <span id="total{{order.id}}"
+                  >{% widthratio order.quantity 1 order.item.unit_price %}</span
+                >
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+          <!-- checkout button -->
+          <div class="buttons">
+            <button class="button is-info is-fullwidth" type="submit">
+              Checkout
+            </button>
+          </div>
+        </form>
+        {% else %}
+        <div>
+          <h3>You have not ordered any item</h3>
+        </div>
+        {%endif%}
+        <!-- one order item end -->
+      </div>
+    </div>
+    <div class="col-cart-mid"></div>
+  </div>
+</div>
+<!-- cart end -->
+<script>
+  let total_items = document.querySelector("#total_items");
+  function decrement(id) {
+    var quantity = document.getElementById("quantity" + id).value;
+    var unit_price = document.getElementById("unit_price" + id).innerHTML;
+    var total = document.getElementById("total" + id).value;
+
+    quantity = parseInt(quantity);
+    unit_price = parseFloat(unit_price.replace("Rs.", ""));
+
+    if (quantity > 1) {
+      quantity--;
+      total = quantity * unit_price;
+      document.getElementById("quantity" + id).value = quantity;
+      document.getElementById("total" + id).innerHTML = total;
+    }
+  }
+
+  function increment(id) {
+    var quantity = document.getElementById("quantity" + id).value;
+    var unit_price = document.getElementById("unit_price" + id).innerHTML;
+    var total = document.getElementById("total" + id).value;
+
+    quantity = parseInt(quantity);
+    unit_price = parseFloat(unit_price.replace("Rs.", ""));
+
+    quantity++;
+    total = quantity * unit_price;
+
+    document.getElementById("quantity" + id).value = quantity;
+    document.getElementById("total" + id).innerHTML = total;
+  }
+</script>
+{% endblock %}

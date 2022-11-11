@@ -1,0 +1,57 @@
+{% extends 'product_app/base.html' %} {% load static %} 
+
+{% block title %}Cart{%endblock title %} 
+
+{% block css %}
+<link rel="stylesheet" href="{% static './css/cart.css' %}" />
+{% endblock css %} 
+
+{% block content %}
+<div class="container-cart">
+
+	<div class="row-cart">
+		{% if carts %}
+		{% for cart in carts %}
+		<div class="col-cart-main">
+		<div class="row-order-item">
+			<div class="col-order-item">
+				<img
+					src="http://localhost:8000{{cart.item.image.url}}"
+					class="img-item"
+					alt="item-image"
+				/>
+				<div class="order-item-details">
+				<div class="item-details">
+					{{cart.item.product.store_name}}
+				</div>
+	
+				<div class="item-details">{{cart.item}}</div>
+				<div class="item-price item-details" id="unit_price{{cart.id}}">
+					Rs. {{cart.item.unit_price}}
+				</div>
+				</div>
+				<div class="is-flex">
+				<div class="buttons is-flex">
+					<a href="{% url 'delete_from_cart' cart.id %}" class="button is-danger">Delete</a>
+				</div>
+			</div>
+			
+		</div>		
+		{% endfor %}
+		{% else %}
+		<div>
+			<h3>No items to show in cart ....</h3>
+		</div>
+		{%endif%}
+	</div>
+
+	{% if carts %}
+	<div class="buttons">
+		<a class="button is-info is-fullwidth" href=" {% url 'order_all' %} ">
+			Order Now
+		</a>
+	</div>
+	{% endif %}
+</div>
+	<div class="col-cart-mid"></div>
+{% endblock %}

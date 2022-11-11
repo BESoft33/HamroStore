@@ -1,0 +1,86 @@
+{% load static %}
+
+<title>Checkout</title>
+{% block css %}<link rel="stylesheet" href="{% static './css/checkout.css' %}">{% endblock css %}
+
+<script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+
+{% block  main %}
+    <div class="top">
+        <h2>Checkout</h2>
+        <a href="{% url 'home_page' %}" class="button is-primary goto-orders">Goto Home Page</a>
+        <a href="{% url 'orders' %}" class="button is-secondary goto-orders">Goto Orders Page</a>
+    </div>
+    {% if orders %}
+    <div class="row">
+        <div class="col-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-50">
+                        <h3>Payment</h3>
+                        <h4>Cart <span class="price" style="color:black">
+                            <i class="fa fa-shopping-cart"></i> 
+                            <b>{{total_orders}}</b></span>
+                        </h4>
+                            {% for order in orders %}
+                            <p>
+                                <a href="#">{{order.item.name}}</a> 
+                                
+                                <span class="price">{% widthratio order.quantity 1 order.item.unit_price %}</span>
+                            </p>
+                            {% endfor %}
+                            <hr>
+                            <p>Total <span class="price" style="color:black"><b>{{total}}</b></span></p>
+                            <button class="btn" id="payment">Checkout with Khalti</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {%endif%}
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+    <script>
+        var config = {
+            "publicKey": "test_public_key_ee8f489a141a44c0b7922037df48d668",
+            "productIdentity": "1234567890",
+            "productName": "fdsfdsfd",
+            "productUrl": "http://localhost:8000/product_app/home",
+            "paymentPreference": [
+                "KHALTI",
+                "EBANKING",
+                "MOBILE_BANKING",
+                ],
+            "eventHandler": {
+                onSuccess (payload) {
+                    console.log(payload)
+                    let params ={
+                        "amount":payload.amount,
+                        "p_id":payload.product_identity,
+                        "p_name":payload.product_name,
+                        "token":payload.token
+                    }
+                    axios.get('/order_app/verify-payment/',{
+                        params
+                    }).then(response=>{
+                            window.location.href="{% url 'billing_location' %}"
+                            console.log(response.data)
+                        })
+                },
+                onError (error) {
+                    console.log(error)
+                }
+
+            }
+        };
+        
+        var checkout = new KhaltiCheckout(config);
+        var btn = document.getElementById("payment");
+        btn.onclick = function () {
+            // minimum transaction amount must be 10, i.e 1000 in paisa.
+            checkout.show({amount: {{total}}*100});
+        }
+    </script>
+    
+{% endblock %}

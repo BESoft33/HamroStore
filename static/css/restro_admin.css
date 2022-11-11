@@ -1,0 +1,104 @@
+.container-admin{
+    min-height: 660px;
+}
+.row-add_items{
+    min-height: 400px;
+    width: 80vw;
+    /* border: 1px solid red; */
+    margin: auto;
+    margin-bottom: 10px;
+}
+.row-add_items .col-add_items h1{
+    margin-left: 60px;
+    margin-bottom: 10px;
+}
+.row-add_items .col-add_items .input_group{
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.row-add_items .col-add_items .inputItemBox{
+    display: inline;
+    margin-left: 2px;
+    height: 30px;
+    width: 261px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+.row-add_items .col-add_items .btn-add{
+    font-size: 22px;
+    /* margin-left: 20px; */
+    padding: 5px 10px;
+}
+.row-add_items .col-add_items .item_name{
+    /* color: red; */
+    font-size: 18px;
+    font-weight: bolder;
+    margin-left: 60px;
+}
+.row-add_items .col-add_items .item_image{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.row-add_items .col-add_items #img{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.row-add_items .col-add_items .btn-add{
+    margin-left: 60px;
+    margin-bottom: 20px;
+    padding: 3px 10px;
+    height: 33px;
+    font-size: 20px;
+}
+
+
+/* table start */
+.row-menu{
+    min-height: 400px;
+    margin-bottom: 20px;
+}
+
+.row-menu .col-menu h1{
+    width: 100%;
+    text-align: center;
+    /* color: pink; */
+    margin-bottom: 20px;
+}
+.row-menu .col-menu table{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    border: 1px solid black;
+
+}
+
+.row-menu .col-menu .table-row{
+    font-size: 18px;
+    /* margin-bottom: 10px; */
+}
+.row-menu .col-menu .table-row .table-heading{
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+}
+.row-menu .col-menu .table-row .table-data{
+    font-size: 16px;
+    height: 20px;
+    margin-bottom: 10px;
+}
+.row-menu .col-menu .table-row .buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.row-menu .col-menu .table-row .tbtn{
+    font-size: 16px;
+    padding: 2px 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 3px;;
+}
+/* table end */

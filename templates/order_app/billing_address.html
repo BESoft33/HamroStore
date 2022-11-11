@@ -1,0 +1,40 @@
+{% load static %}
+<link rel="stylesheet" href="{% static './css/checkout.css' %}">
+
+<script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+
+{% block  content %}
+    <h2>Checkout</h2>
+    <div class="row">
+        <div class="col-50">
+            <div class="container">
+                <form action="{% url 'billing_location' %}" id="checkout-form" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-50">
+                            <h3>Billing Address</h3>
+                            <label for="fname"><i class="fa fa-user"></i> First Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="John" required value={{customer.first_name}} required minlength="3">
+                            
+                            <label for="fname"><i class="fa fa-user"></i> Last Name</label>
+                            <input type="text" id="fname" name="lastname" placeholder="Doe" required value={{customer.last_name}} required minlength="3">
+                            
+                            <label for="phone"><i class="fa fa-envelope"></i> Phone</label>
+                            <input type="text" id="email" name="email" placeholder="98********" required value={{customer.user.phone}} required minlength="3" pattern="98[0-9]{8}">
+                            
+                            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" required >
+
+                            <button type="submit" class="btn btn-primary" >Submit Address</button>
+                        </div>
+                        
+                    </div>
+                </form>
+                
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}
+
+

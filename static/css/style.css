@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    overflow-x:hidden;
+}
+
+/* navbar start */
+header{
+    background: #ff4548;
+}
+
+li{
+    list-style-type: none;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar{
+    min-height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+.nav-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items:center ;
+    gap: 60px;
+    margin-right: 100px;
+}
+.nav-branding{
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-left: 6vw;
+}
+.nav-link{
+    transition: 0.7s ease;
+    text-transform: uppercase;
+}
+.nav-link:hover{
+    color: #262626;
+}
+.hamburger{
+    display: none;
+    cursor:pointer;
+}
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: #fff;
+}
+
+.checkout{
+    height:40px; 
+    width:300px; 
+    background-color:#518C66; 
+    color:#eee; 
+    font-weight:400;
+    font-size:2rem;
+}
+
+.order-button{
+    margin-bottom: 20px;
+    height: 20px;
+}
+
+@media(max-width: 768px){
+    .hamburger{
+        display: block;
+    }
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .nav-menu{
+        position: absolute  ;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: #ff4548;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s ease;
+        z-index: 99;
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    .nav-menu a:hover{
+        color: #262626;
+    }
+    .nav-menu.active{
+        left: 0;
+        position: absolute;
+        margin-top: -15px
+    }
+
+    .nav-branding {
+        text-transform: uppercase;
+        font-size: 2rem;
+        margin-left: 18vw;
+    }
+}
+
+/* navbar end */
+
+/* content start */
+.container{
+    /* background: darkgray; */
+    width:100vw;
+    min-height: 670px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../images/background.jpg'); */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+}
+.container-bg{
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}   
+.container .search-container{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.container .search-container h1{
+    text-transform: capitalize;
+    font-size: 40px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.container .search-container .formBx .search-city{
+    width: 200px;
+    height: 40px;
+    font-size: 17px;
+    text-transform: capitalize;
+    border-radius: 10px;
+    border: none;
+    margin-right: 10px;
+    padding: 0 10px;
+}
+.container .search-container .formBx .search-city:focus{
+    outline: none;
+}
+
+.container .search-container .formBx .search-type{
+    width: 300px;
+    height: 40px;
+    font-size: 17px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 10px;
+    padding: 0 10px;
+}
+.container .search-container .formBx .search-type:focus{
+    outline: none;
+}
+
+.container .search-container .formBx .btn{
+    width: 70px;
+    height: 40px;
+    font-size: 17px;
+    background: #ff4548;
+    border-radius: 10px;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+
+
+/* content end */
+
+/* responsive for landing page start */
+
+@media (max-width: 768px){
+    .container .search-container .formBx .search-city {
+        width: 200px;
+        height: 40px;
+        font-size: 17px;
+        text-transform: capitalize;
+        border-radius: 10px;
+        border: none;
+        margin-right: 10px;
+        padding: 0 10px;
+        display: flex;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .container .search-container .formBx .search-type {
+        width: 300px;
+        height: 40px;
+        font-size: 17px;
+        border-radius: 10px;
+        border: none;
+        padding: 0 10px;
+        display: flex;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .container .search-container .formBx .btn {
+        width: 95px;
+        height: 40px;
+        font-size: 17px;
+        background: #ff4548;
+        border-radius: 10px;
+        border: none;
+        padding: 10px 20px;
+        margin: 0 auto;
+        display: flex;
+    }
+    .container .search-container h1{
+        display: flex;
+        text-transform: capitalize;
+        font-size: 40px;
+        color: #fff;
+        margin:20px 20px;
+        margin-top: -130px;
+    }
+}
+/* responsive for landing page end */
